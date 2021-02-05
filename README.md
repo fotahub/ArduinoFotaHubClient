@@ -7,7 +7,7 @@ As of now, the ArduinoFotaHubClient library can be used on Wifi&reg; Nina or Wif
 # Installation
 To use the ArduinoFotaHubClient library, the [Arduino&reg; IDE](https://www.arduino.cc/en/software) **1.8.13** or later must be available on your laptop or computer.
 
-The installation of the ArduinoFotaHubClient library itself and the required dependencies is explained [here](docs/installation/library-installation.md). 
+The installation of the ArduinoFotaHubClient library itself and the required dependencies is explained [here](docs/installation/install-library.md). 
 
 In addition, you must add the `fotahub.com` root certificate to your Wifi&reg; Nina or Wifi&reg; 101 module compatible board or shield as explained in [this guide](https://support.arduino.cc/hc/en-us/articles/360016119219-How-to-add-certificates-to-Wifi-Nina-Wifi-101-Modules-).
 
