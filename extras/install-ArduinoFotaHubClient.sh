@@ -20,15 +20,27 @@ $ARDUINO_CLI_CMD lib install ArduinoHttpClient
 $ARDUINO_CLI_CMD lib install ArduinoOTA
 $ARDUINO_CLI_CMD lib install LibPrintf
 $ARDUINO_CLI_CMD lib install WiFiNINA
-# echo Installing ArduinoFotaHubClient...
-# if [ ! -d "libraries\ArduinoFotaHubClient" ]
-# then
-#     $ARDUINO_CLI_CMD lib install --git-url https://github.com/fotahub/ArduinoFotaHubClient
-# else
-#     echo Already installed ArduinoFotaHubClient
-# fi
+echo Installing ArduinoFotaHubClient...
+if [ ! -d "libraries/ArduinoFotaHubClient" ]
+then
+    $ARDUINO_CLI_CMD lib install --git-url https://github.com/fotahub/ArduinoFotaHubClient
+    # Workaround for apparent Arduino-CLI bug
+    # (see https://github.com/arduino/arduino-cli/blob/master/arduino/libraries/librariesmanager/install.go#L202 for details)
+    if [ -d "libraries/ArduinoFotaHubClien" ]
+        mv libraries/ArduinoFotaHubClien libraries/ArduinoFotaHubClient
+    fi
+else
+    echo Already installed ArduinoFotaHubClient
+fi
+echo Installing ArduinoFotaHubClientWrappers...
+if [ ! -d "libraries/ArduinoFotaHubClientWrappers" ]
+then
+    $ARDUINO_CLI_CMD lib install --git-url https://github.com/fotahub/ArduinoFotaHubClientWrappers
+else
+    echo Already installed ArduinoFotaHubClient
+fi
 echo Installing ZeroTimer...
-if [ ! -d "libraries\ZeroTimer" ]
+if [ ! -d "libraries/ZeroTimer" ]
 then
     $ARDUINO_CLI_CMD lib install --git-url https://github.com/EHbtj/ZeroTimer
 else
