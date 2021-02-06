@@ -20,7 +20,7 @@ The Simple example can be used as is with the [ARDUINO MKR WIFI 1010](https://st
 
 ## Installation
 
-If you have not done so already, install the [Arduino IDE](https://www.arduino.cc/en/software) as well as the ArduinoFotaHubClient library and its dependencies as explained [here](../installation/library-installation.md). 
+If you have not done so already, install the [Arduino IDE](https://www.arduino.cc/en/software) as well as the ArduinoFotaHubClient library and its dependencies as explained [here](../installation/install-library.md). 
 
 In addition, make sure that you have added the `fotahub.com` root certificate to the Wifi Nina/Wifi 101 Module of your board as explained in [this guide](https://support.arduino.cc/hc/en-us/articles/360016119219-How-to-add-certificates-to-Wifi-Nina-Wifi-101-Modules-).
 
