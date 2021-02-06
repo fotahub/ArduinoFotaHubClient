@@ -27,6 +27,7 @@ then
     # Workaround for apparent Arduino-CLI bug
     # (see https://github.com/arduino/arduino-cli/blob/master/arduino/libraries/librariesmanager/install.go#L202 for details)
     if [ -d "libraries/ArduinoFotaHubClien" ]
+    then
         mv libraries/ArduinoFotaHubClien libraries/ArduinoFotaHubClient
     fi
 else
