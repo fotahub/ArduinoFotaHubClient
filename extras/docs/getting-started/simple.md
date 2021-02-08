@@ -42,7 +42,7 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
 #define WIFI_PASSPHRASE "My-Cryptic-WiFi-Passphrase"
 ```
 
-1. Go to the `DemoProductInfo.h` file, and initialize the `DEMO_PRODUCT_ID` and `DEMO_PRODUCT_NAME` constants with the id and the name of the previously created FotaHub product. Leave the `DEMO_PRODUCT_FIRMWARE_VERSION` as is for now. In case you have selected anything else than `SHA256` as the binary checksum algorithm for your FotaHub product, you also must adjust the   `DEMO_PRODUCT_FIRMWARE_UPDATE_VERIFICATION_ALGORITHM` constant accordingly:
+3. Go to the `DemoProductInfo.h` file, and initialize the `DEMO_PRODUCT_ID` and `DEMO_PRODUCT_NAME` constants with the id and the name of the previously created FotaHub product. Leave the `DEMO_PRODUCT_FIRMWARE_VERSION` as is for now. In case you have selected anything else than `SHA256` as the binary checksum algorithm for your FotaHub product, you also must adjust the `DEMO_PRODUCT_FIRMWARE_UPDATE_VERIFICATION_ALGORITHM` constant accordingly:
 
 ```c
 #define DEMO_PRODUCT_ID "eb8ab3b1-0938-40ec-afba-9379363948cf"
@@ -56,13 +56,13 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
    
 > &#x1F6C8; You can look up the id of your [FotaHub](https://fotahub.com) product in the `Settings > General` section of the same.
 
-1. Connect your board to your laptop or computer using a USB cable, and configure the matching board type and serial port in the Arduino IDE (`Tools > Board` and `Tools > Port`).
+4. Connect your board to your laptop or computer using a USB cable, and configure the matching board type and serial port in the Arduino IDE (`Tools > Board` and `Tools > Port`).
 
-2. Compile and upload the sketch to your board (&check; and &#x279C; toolbar icons, or `Sketch > Verify/Compile` and `Sketch > Upload`).
+5. Compile and upload the sketch to your board (&check; and &#x279C; toolbar icons, or `Sketch > Verify/Compile` and `Sketch > Upload`).
 
-3. Open the serial monitor (&#x1F50E; toolbar icon, or `Tools > Serial Monitor`), see how the application starts and verify whether it connects to Wi-Fi network:
+6. Open the serial monitor (&#x1F50E; toolbar icon, or `Tools > Serial Monitor`), see how the application starts and verify whether it connects to Wi-Fi network:
 
-![](simple-1.png "Running initial firmware version") 
+![](simple-1.png "Start of initial firmware version") 
 
 ### Create and upload new firmware version to FotaHub
 
@@ -72,19 +72,19 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
 #define DEMO_PRODUCT_FIRMWARE_VERSION "1.1"
 ```
 
-1. Optional: Make another change in your firmware, e.g., increase the blink frequency of the built-in LED on your board by going back to the `Configuration.h` file and decresing the `BLINK_PERIOD` constant:
+2. Optional: Make another change in your firmware, e.g., increase the blink frequency of the built-in LED on your board by going back to the `Configuration.h` file and decresing the `BLINK_PERIOD` constant:
 
 ```c
 #define BLINK_PERIOD 250
 ```
 
-3. Compile the sketch and export the resulting binary to your sketch folder (`Sketch > Export`). Open the sketch folder (`Sketch > Show Sketch Folder`) and locate the binary file named `Simple.ino.<board name>.bin`.
+3. Compile the sketch and export the resulting binary to your sketch folder (`Sketch > Export`). Open the sketch folder (`Sketch > Show Sketch Folder`) and locate the binary file named `Simple.ino.<board-name>.bin`.
 
-4. Upload the binary to your FotaHub product as explained [here](../fotahub/upload-firmware.md).
+4. Upload the binary as firmware version `1.1` to your FotaHub product as explained [here](../fotahub/upload-firmware.md).
 
 ### Make your first firmare over-the-air update 
 
-1. Go back to (or reopen) the serial monitor showing the execution status of your board running the initial firmware version. Enter the new firmware version followed by a ':' and the SHA256 checksum of the same in the text field above the area where the output from your board is displayed:
+1. Go back to (or reopen) the serial monitor showing the execution status of your board running the initial firmware version. Enter the new firmware version followed by a ':' and the checksum of the same in the text field above the area where the output from your board is displayed:
 
 ![](simple-2.png "Trigger of FOTA update") 
 
@@ -94,6 +94,6 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
 
 ![](simple-3.png "Execution of FOTA update") 
 
-1. Close and reopen the serial monitor to verify that the board has been restarted and executes the new firmware version as expected. If your new firmware version includes the change wrt to the blink frequency of the built-in LED as mentioned above, you should now see that the latter is blinking significantly faster. 
+3. Close and reopen the serial monitor to verify that the board has been restarted and executes the new firmware version as expected. If your new firmware version includes the change wrt to the blink frequency of the built-in LED as mentioned above, you should now see that the latter is blinking significantly faster. 
 
 ![](simple-4.png "Running new firmware version") 
