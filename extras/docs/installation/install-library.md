@@ -25,6 +25,10 @@ You can install the ArduinoFotaHubClient library [manually](#manual-installation
     * ArduinoOTA
     * LibPrintf
     * WiFiNINA
+  
+3. When done, double-check that the ArduinoFotaHubClient library and all its dependencies are present in your sketchbook location's `libraries` folder:
+
+![](install-library-1.png "ArduinoFotaHubClient library and dependencies") 
 
 ## Semi-automated installation using Arduino CLI
 
@@ -34,8 +38,10 @@ You can install the ArduinoFotaHubClient library [manually](#manual-installation
 
 > &#x1F6C8; The **sketchbook location** is the folder where the Arduino IDE stores your sketches. You can look up its location in the Arduino IDE preferences (`File -> Preferences`). The default location under Linux is `/home/Sketchbook`, and on Windows or Mac OS X it is a folder named `Arduino` inside your `Documents` folder.
 
-1. Open a terminal window and change directory into your Arduino sketchbook location.
+3. Open a terminal window and change directory into your Arduino sketchbook location.
 
-2. Define an environment variable named `ARDUINO_CLI_HOME` and that points to the Arduino CLI's install location.
+4. Define an environment variable named `ARDUINO_CLI_HOME` and that points to the Arduino CLI's install location.
 
-3. Run the ArduinoFotaHubClient library installer script. When is has completed, double-check that the ArduinoFotaHubClient library and its dependencies are present in your sketchbook location's `libraries` folder.
+5. Run the ArduinoFotaHubClient library installer script. When is has completed, double-check that the ArduinoFotaHubClient library and all its dependencies are present in your sketchbook location's `libraries` folder:
+
+![](install-library-1.png "ArduinoFotaHubClient library and dependencies") 
