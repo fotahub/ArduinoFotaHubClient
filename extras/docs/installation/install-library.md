@@ -6,7 +6,7 @@ You can install the ArduinoFotaHubClient library [manually](#manual-installation
 
 > &#x26A0; First make sure that all instances of the Arduino IDE are closed. The IDE only scans for libraries at startup. It will not see any manually installed library as long as any instance of the IDE is open!
    
-1. Manually install the libraries listed below from GitHub using one following methods:
+1. Manually install the libraries listed below from GitHub using one of the following methods:
    1. Download the libraries as ZIP, and extract all content into the `libraries` folder under your Arduino **sketchbook location** (see &#x1F6C8; below for details). Rename the extracted root folders so that each of them has the same name as the contained library. 
    2. [Clone](https://github.com/git-guides/git-clone) the libraries right into the `libraries` folder under your Arduino **sketchbook location** (see &#x1F6C8; below for details).
    <br/><br/>  
