@@ -12,7 +12,7 @@ e.g., `1.1:a15d5599d8745ff4f51690eb3996afcf75d0b1729d1b8cda2491b03940417521`
 
 Once a valid update info string has been received and the contained new firmware version is different from the version of the firmware already running on the device, the firmware update procedure is triggered. It involves the device to connect to FotaHub and download the binary of the new firmware version. Thereby it uses a dedicated URL including the id of the product representing the device in FotaHub, and the name and the version of the firmware binary to be retrieved.
 
-The downloaded firmware binary is stored in the device's flash memory. At the same time, the downloaded firmware binary's checksum gets recalculated and compared to the checksum included in the previously communicated update info string. If both are matching the firmware update gets activated by restarting the device and letting boot it into the flash memory partition where the downloaded firmware binary has been stored. After the restart, the device executes the new firmware version downloaded from FotaHub.
+The downloaded firmware binary is stored in the device's flash memory. At the same time, the downloaded firmware binary's checksum gets recalculated and compared to the checksum included in the previously communicated update info string. If both match the firmware update gets activated by restarting the device and letting boot it into the flash memory partition where the downloaded firmware binary has been stored. After the restart, the device executes the new firmware version downloaded from FotaHub.
 
 ## Supported targets
 
@@ -20,9 +20,7 @@ The Simple example can be used as is with the [ARDUINO MKR WIFI 1010](https://st
 
 ## Installation
 
-If you have not done so already, install the [Arduino IDE](https://www.arduino.cc/en/software) as well as the ArduinoFotaHubClient library and its dependencies as explained [here](../installation/install-library.md). 
-
-In addition, make sure that you have added the `fotahub.com` root certificate to the Wifi Nina/Wifi 101 Module of your board as explained in [this guide](https://support.arduino.cc/hc/en-us/articles/360016119219-How-to-add-certificates-to-Wifi-Nina-Wifi-101-Modules-).
+A description of the SDKs and tools that must be available on your laptop or computer and advise how to install them can be found [here](../../../README.md#installation).
 
 ## Usage
 
@@ -60,11 +58,13 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
 
 5. Compile and upload the sketch to your board (&check; and &#x279C; toolbar icons, or `Sketch > Verify/Compile` and `Sketch > Upload`).
 
-6. Open the serial monitor (&#x1F50E; toolbar icon, or `Tools > Serial Monitor`), see how the application starts and verify whether it connects to Wi-Fi network:
+6. Open the serial monitor (&#x1F50E; toolbar icon, or `Tools > Serial Monitor`), observe how the firmware starts up and verify whether it connects to the Wi-Fi network:
 
 ![](simple-1.png "Start of initial firmware version") 
 
-### Create and upload new firmware version to FotaHub
+<p style="margin-left: 2em">Also have a look at the built-in LED on your board. It should blink with a period of 1 s approx.</p> 
+
+### Create and upload a new firmware version to FotaHub
 
 1. Go back to the `DemoProductInfo.h` file, and bump the `DEMO_PRODUCT_FIRMWARE_VERSION` constant:
 
@@ -72,13 +72,13 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
 #define DEMO_PRODUCT_FIRMWARE_VERSION "1.1"
 ```
 
-2. Optional: Make another change in your firmware, e.g., increase the blink frequency of the built-in LED on your board by going back to the `Configuration.h` file and decresing the `BLINK_PERIOD` constant:
+2. *Optional:* Make another change in your firmware, e.g., increase the blink frequency of the built-in LED on your board by going back to the `Configuration.h` file and decreasing the `BLINK_PERIOD` constant:
 
 ```c
 #define BLINK_PERIOD 250
 ```
 
-3. Compile the sketch and export the resulting binary to your sketch folder (`Sketch > Export`). Open the sketch folder (`Sketch > Show Sketch Folder`) and locate the binary file named `Simple.ino.<board-name>.bin`.
+3. Compile the sketch and export the resulting firmware binary to your sketch folder (`Sketch > Export`). Open the sketch folder (`Sketch > Show Sketch Folder`) and locate the firmware binary file named `Simple.ino.<board-name>.bin`.
 
 4. Upload the binary as firmware version `1.1` to your FotaHub product as explained [here](../fotahub/upload-firmware.md).
 
@@ -90,10 +90,10 @@ Create a FotaHub product for your board as explained [here](../fotahub/create-pr
 
 > &#x1F6C8; You can find the checksum of the new firmware version by selecting it in the `Details` section of your [FotaHub](https://fotahub.com) product and locating it in the properties of the same.
 
-2. Submit the firmware update info string to your board (`Send` button). This will trigger the firmware over-the-air update procedure. Upon successful completion, the board will be restarted:
+1. Submit the firmware update info string to your board (`Send` button). This will trigger the firmware over-the-air update procedure. Upon successful completion, the board will be restarted:
 
 ![](simple-3.png "Execution of FOTA update") 
 
-3. Close and reopen the serial monitor to verify that the board has been restarted and executes the new firmware version as expected. If your new firmware version includes the change wrt to the blink frequency of the built-in LED as mentioned above, you should now see that the latter is blinking significantly faster. 
+1. Close and reopen the serial monitor to verify that the board has been restarted and executes the new firmware version as expected. In case that the new firmware version includes the change wrt to the blink frequency of the built-in LED as mentioned above, you should see that the latter is blinking significantly faster now. 
 
 ![](simple-4.png "Running new firmware version") 
