@@ -4,19 +4,23 @@ The *Simple* example demonstrates the most straight forward manner to make firmw
 
 ## Operating principle
 
-The device listens for a firmware update info string to be sent over the serial port. It is expected to consist of the new firmware version the device should be updated to followed by a ':' and the checksum or signature of the new firmware version:
+The device listens for a firmware update info string to be sent over the serial port. It is expected to consist of the new firmware version the device should be updated to followed by a ':' separator and the checksum or signature of the new firmware version:
 
-`<new-version>:<verificationData>` 
+`<new-version>:<verification-data>` 
 
-e.g., `1.1:a15d5599d8745ff4f51690eb3996afcf75d0b1729d1b8cda2491b03940417521`
+For example: 
 
-Once a valid update info string has been received and the contained new firmware version is different from the version of the firmware already running on the device, the firmware update procedure is triggered. It involves the device to connect to FotaHub and download the binary of the new firmware version. Thereby, it uses a dedicated URL including the id of the product representing the device in FotaHub, and the name and the version of the firmware binary to be retrieved.
+`1.1:a15d5599d8745ff4f51690eb3996afcf75d0b1729d1b8cda2491b03940417521`
 
-The downloaded firmware binary is stored in the device's flash memory. At the same time, the downloaded firmware binary's checksum or signature gets recalculated and compared to the checksum or signature included in the previously communicated update info string. If both match the firmware update gets activated by restarting the device and letting boot it into the flash memory partition where the downloaded firmware binary has been stored. After the restart, the device executes the new firmware version downloaded from FotaHub.
+Once a valid update info string has been received and the contained new firmware version is different from the version of the firmware already running on the device, the firmware update procedure is triggered. It involves the device to connect to FotaHub and download the binary of the new firmware version. Thereby, it uses a dedicated URL including the id of the product representing the device in FotaHub, and the name and the version of the firmware binary to be retrieved, e.g.:
+
+`https://bin.fotahub.com/148f689a-deb0-42db-927c-409f73bd9a12/DemoProduct-1.1`
+
+The downloaded firmware binary is stored in the device's flash memory. At the same time, the downloaded firmware binary's checksum or signature gets recalculated and compared to the checksum or signature included in the previously communicated update info string. If both match, the firmware update gets activated by restarting the device and letting boot it into the flash memory partition where the downloaded firmware binary has been stored. After the restart, the device executes the new firmware version downloaded from FotaHub.
 
 ## Supported targets
 
-The Simple example can be used as is with the [ARDUINO MKR WIFI 1010](https://store.arduino.cc/arduino-mkr-wifi-1010) board. With some adaptations, it can also be used with any other Wifi Nina or Wifi 101 module compatible board of the Arduino MKR family.  
+The Simple example can be used as is with the [ARDUINO MKR WIFI 1010](https://store.arduino.cc/arduino-mkr-wifi-1010) board. With some adaptations, it can also be used with any other Wifi Nina or Wifi 101 module compatible board of the Arduino MKR family.
 
 ## Installation
 
@@ -35,15 +39,15 @@ Create a FotaHub product that represents your board in FotaHub as explained [her
 2. Go to the `Configuration.h` file, and initialize the `WIFI_SSID` and `WIFI_PASSPHRASE` constants with the crentials of the Wi-Fi network you want to connect to with your board:
 
 ```c
-#define WIFI_SSID "My-Fancy-WiFi-SSID"
+#define WIFI_SSID "my-fancy-WiFi-SSID"
 
-#define WIFI_PASSPHRASE "My-Cryptic-WiFi-Passphrase"
+#define WIFI_PASSPHRASE "my-cryptic-WiFi-passphrase"
 ```
 
 3. Go to the `DemoProductInfo.h` file, and initialize the `DEMO_PRODUCT_ID` and `DEMO_PRODUCT_NAME` constants with the id and the name of the previously created FotaHub product (see `Products > {{Your FotaHub product}} > Settings > General` at [Fotahub](https://fotahub.com)). Leave the `DEMO_PRODUCT_FIRMWARE_VERSION` as is for now. In case you have selected anything else than `SHA256` as the binary checksum algorithm for your FotaHub product or opted for using a signature instead, you also must adjust the `DEMO_PRODUCT_FIRMWARE_UPDATE_VERIFICATION_ALGORITHM` constant accordingly:
 
 ```c
-#define DEMO_PRODUCT_ID "eb8ab3b1-0938-40ec-afba-9379363948cf"
+#define DEMO_PRODUCT_ID "148f689a-deb0-42db-927c-409f73bd9a12"
 
 #define DEMO_PRODUCT_NAME "Demo Product"
 
@@ -82,7 +86,7 @@ Create a FotaHub product that represents your board in FotaHub as explained [her
 
 ### Make your first firmare over-the-air update 
 
-1. Go back to (or reopen) the serial monitor showing the execution status of your board running the initial firmware version. Enter the new firmware version followed by a ':' and the checksum or signature of the same (see `Products > {{Your FotaHub product}} > Details > {{New firmware version}}` at [Fotahub](https://fotahub.com)) in the text field above the area where the output from your board is displayed:
+1. Go back to (or reopen) the serial monitor showing the execution status of your board running the initial firmware version. Enter the new firmware version followed by a ':' separator and the checksum or signature of the same (see `Products > {{Your FotaHub product}} > Details > {{New firmware version}}` at [Fotahub](https://fotahub.com)) in the text field above the area where the output from your board is displayed:
 
 ![](simple-2.png "Trigger of FOTA update") 
 

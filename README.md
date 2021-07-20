@@ -4,7 +4,9 @@ The ArduinoFotaHubClient library enables developers to create firmware for Ardui
 # Supported targets
 
 As of now, the ArduinoFotaHubClient library can be used on Wifi&reg; Nina or Wifi&reg; 101 module compatible boards of the Arduino&reg; MKR family. In future, it is planned to support also Wifi&reg; Nina compatible boards of the Arduino&reg; AVR family. 
+
 # Installation
+
 To use the ArduinoFotaHubClient library, the [Arduino&reg; IDE](https://www.arduino.cc/en/software) **1.8.13** or later must be available on your laptop or computer.
 
 The installation of the ArduinoFotaHubClient library itself and the required dependencies is explained [here](extras/docs/installation/install-library.md). 
