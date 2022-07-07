@@ -16,20 +16,21 @@ enum NetworkAdapterStatus {
   NETWORK_ADAPTER_STATUS_ERROR = 1,
   NETWORK_ADAPTER_STATUS_CONNECTED = 2
 };
+typedef enum NetworkAdapterStatus NetworkAdapterStatus_t;
 
 void fotahub_init(char const *productId, char const *productName, FOTAUpdateClientConfig_t const *pUpdateClientConfig);
 
 void fotahub_run(void);
 
-void fotahub_notifyNetworkStatusChange(enum NetworkAdapterStatus status);
+void fotahub_notifyNetworkStatusChange(NetworkAdapterStatus_t status);
 
 bool fotahub_downloadFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
 
-bool fotahub_activateFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
+bool fotahub_applyFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
 
 bool fotahub_confirmFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
 
-bool fotahub_revertFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
+bool fotahub_rollBackFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
 
 extern void fotahub_onConnectionStatusChanged(ConnectionStatus_t status);
 

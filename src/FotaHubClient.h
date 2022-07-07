@@ -2,10 +2,6 @@
 #define FOTAHUBCLIENT_H
 
 #include "FotaHub.h"
-#include <HashWrapper.h>
-#include <HttpClientWrapper.h>
-#include <InternalStorageWrapper.h>
-#include <LibPrintf.h>
 
 // Library interface description
 class FotaHubClientClass
@@ -14,17 +10,15 @@ class FotaHubClientClass
   public:
 	void init(const char *productId, const char *productName, const FOTAUpdateClientConfig *pUpdateClientConfig);
 	void run(void);
-	void notifyNetworkStatusChange(NetworkAdapterStatus status);
+	void notifyNetworkStatusChange(NetworkAdapterStatus_t status);
   bool downloadFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
-  bool activateFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
+  bool applyFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
   bool confirmFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
-  bool revertFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
+  bool rollBackFirmwareUpdate(FirmwareUpdateInfo_t *pUpdateInfo);
 
   // Library-accessible "private" interface
   private:
 };
 
 extern FotaHubClientClass FotaHubClient;
-
 #endif
-
