@@ -16,7 +16,7 @@ To enable `arduino-cli`, `make`, etc. to be invoked conveniently from Visual Stu
 * The Arduino CLI install location
 * `C:\msys64\usr\bin` when working under Windows&reg; and using MSYS2 as GNU make toolchain
 
-> &#x1F6C8; As an alternative to adding the Arduino CLI install location to your `Path` of `PATH` environment variable, you can also set an environment variable named `ARDUINO_CLI_HOME` at user or system level.
+    > &#x1F6C8; As an alternative to adding the Arduino CLI install location to your `Path` of `PATH` environment variable, you can also set an environment variable named `ARDUINO_CLI_HOME` at user or system level.
 
 Aside from that, you must add the `fotahub.com` root certificate to your Wifi&reg; Nina or Wifi&reg; 101 module compatible board or shield as explained in [this guide](https://support.arduino.cc/hc/en-us/articles/360016119219-How-to-add-certificates-to-Wifi-Nina-Wifi-101-Modules-).
 

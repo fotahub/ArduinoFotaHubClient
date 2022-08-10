@@ -21,6 +21,7 @@ else
 BASH = /bin/bash
 endif
 
+
 ARDUINO_CLI_HOME ?= $(if $(filter Windows_NT,$(OS)),/c/Arduino/arduino-cli,$(HOME)/local/bin)
 ARDUINO_CLI_HOME := $(call toCygpath,$(ARDUINO_CLI_HOME))
 ARDUINO_CLI_CMD = $(if $(wildcard $(ARDUINO_CLI_HOME)),$(ARDUINO_CLI_HOME)/arduino-cli,arduino-cli)
@@ -82,9 +83,10 @@ else
 	$(error Please connect your $(ARDUINO_BOARD) board to your laptop or computer using a USB cable, and then rerun this command)
 endif
 
-monitor:
+monitor: 
 ifneq ($(ARDUINO_PORT),)
 	$(Q) $(BASH) -c 'trap "exit 0" INT; $(ARDUINO_CLI_CMD) monitor --port $(ARDUINO_PORT)'
 else
 	$(error Please connect your $(ARDUINO_BOARD) board to your laptop or computer using a USB cable, and then rerun this command)
 endif
+

@@ -6,13 +6,24 @@ Q = @
 endif
 
 vecho = @echo
+toCygpath = $(subst \,/,$(1))
 hasGitUrlPrefix = $(findstring ://,$(1))
 stripGitUrlPrefix = $(if $(call hasGitUrlPrefix,$(1)),$(lastword $(subst /, ,$(1))),$(1))
 hasVersionSuffix = $(findstring @,$(1))
 stripVersionSuffix = $(if $(call hasVersionSuffix,$(1)),$(firstword $(subst @, ,$(1))),$(1))
 extractLibraryName = $(call stripVersionSuffix,$(call stripGitUrlPrefix,$(1)))
 
+ifeq ($(OS),Windows_NT)
+MSYS64_HOME ?= /c/msys64
+MSYS64_HOME := $(call toCygpath,$(MSYS64_HOME))
+BASH = $(MSYS64_HOME)/usr/bin/bash
+else
+BASH = /bin/bash
+endif
+
+
 ARDUINO_CLI_HOME ?= $(if $(filter Windows_NT,$(OS)),/c/Arduino/arduino-cli,$(HOME)/local/bin)
+ARDUINO_CLI_HOME := $(call toCygpath,$(ARDUINO_CLI_HOME))
 ARDUINO_CLI_CMD = $(if $(wildcard $(ARDUINO_CLI_HOME)),$(ARDUINO_CLI_HOME)/arduino-cli,arduino-cli)
 export ARDUINO_DIRECTORIES_USER ?= $(shell $(ARDUINO_CLI_CMD) config dump | sed -n 's/\s*user: //p')
 export ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL = true
@@ -72,9 +83,9 @@ else
 	$(error Please connect your $(ARDUINO_BOARD) board to your laptop or computer using a USB cable, and then rerun this command)
 endif
 
-monitor: upload
+monitor: 
 ifneq ($(ARDUINO_PORT),)
-	$(Q) $(ARDUINO_CLI_CMD) monitor --port $(ARDUINO_PORT)
+	$(Q) $(BASH) -c 'trap "exit 0" INT; $(ARDUINO_CLI_CMD) monitor --port $(ARDUINO_PORT)'
 else
 	$(error Please connect your $(ARDUINO_BOARD) board to your laptop or computer using a USB cable, and then rerun this command)
 endif
