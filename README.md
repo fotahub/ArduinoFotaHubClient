@@ -6,7 +6,7 @@ The ArduinoFotaHubClient library can be used on Wifi&reg; Nina or Wifi&reg; 101 
 
 # Installation
 To use the FotaHub&reg; Device SDK for Linux&reg; and Raspberry Pi, the following tools must be available on your laptop or computer:
-* The [Arduino&reg; CLI 0.24](https://arduino.github.io/arduino-cli/0.24) or later
+* The [Arduino&reg; CLI 0.27](https://arduino.github.io/arduino-cli/0.27) or later
 * A GNU make toolchain - we recommend [MSYS2](https://www.msys2.org) when working under Windows&reg;, most likely already available when working under Linux&reg; or Mac&reg; OS X
 * A text editor or IDE of your choice, e.g., [Visual Studio Code](https://code.visualstudio.com)
 

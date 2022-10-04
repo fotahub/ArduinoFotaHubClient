@@ -99,14 +99,16 @@ If not yet done so, either clone or download and uncompress the [ArduinoFotaHubC
     ```
 
 3. Recompile the sketch using `make` in very much the same way as you did for building the initial firmware version (see step 4 in the previous section). Locate the resulting new firmware binary file named `Simple-<board-name>.ino.bin` in the `build` folder (using the `Explorer` view).
-   
-4. Upload the binary as firmware version `1.1` to your FotaHub product as explained [here](../fotahub/upload-firmware.md).
+
+    > &#x1F6C8; You can locate the new firmware binary file also in your file system explorer or copy its path to the clipboard by using corresponding context menu actions in Visual Studio Code (`Reveal in File Explorer` and `Copy Path`). This can come quite handy in the subsequent steps.
+
+4. Upload the new binary (`build/Simple-<board-name>.ino.bin`) as firmware version `1.1` to your FotaHub product as explained [here](../fotahub/upload-firmware.md).
 
 ### Make your first firmare over-the-air update 
 
 1. Reset your board using the reset button (`RST` or `RESET`).
 
-2. Rerun the serial monitor using `make monitor` as before (see step 6 in the penultimate section). Wait until the board has started up and displays a log message saying that it is ready to receive firmware-over-the-air updates. Enter the new firmware version followed by a ':' separator and the checksum or signature of the same (see `Products` > `{{Your FotaHub product}}` > `Details` > `{{New firmware version}}` at [Fotahub](https://fotahub.com)) after the last log message in the serial monitor output:
+2. Rerun the serial monitor using `make monitor` as before (see step 6 in the previous section). Wait until the board has started up and displays a log message saying that it is ready to receive firmware-over-the-air updates. Enter the new firmware version followed by a ':' separator and the checksum or signature of the same (see `Products` > `{{Your FotaHub product}}` > `Details` > `{{New firmware version}}` at [Fotahub](https://fotahub.com)) after the last log message in the serial monitor output:
 
     ![](simple-2.png "Trigger of FOTA update") 
 
