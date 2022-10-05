@@ -50,7 +50,7 @@ EXTRA_CLEAN_AFKTS ?=
 .PHONY: all allDependencies clean cleanDependencies cleanAll
 
 all: core allDependencies
-	$(Q) $(ARDUINO_CLI_CMD) compile --fqbn $(ARDUINO_VENDOR):$(ARDUINO_ARCHITECTURE):$(ARDUINO_BOARD) $(addprefix --library $(ARDUINO_PREINSTALLED_LIBRARIES_ROOT)/,$(ARDUINO_PREINSTALLED_LIBRARIES)) $(addprefix --library $(ARDUINO_LIBRARIES_ROOT)/,$(foreach lib, $(sort $(ARDUINO_LIBRARIES)), $(call extractLibraryName,$(lib)))) --build-path $(OROOT) --build-cache-path $(ARDUINO_CORE_CACHE_DIR) --verbose $(ARDUINO_SKETCH_DIR)/$(ARDUINO_SKETCH_NAME)
+	$(Q) $(ARDUINO_CLI_CMD) compile --fqbn $(ARDUINO_VENDOR):$(ARDUINO_ARCHITECTURE):$(ARDUINO_BOARD) $(addprefix --library $(ARDUINO_PREINSTALLED_LIBRARIES_ROOT)/,$(ARDUINO_PREINSTALLED_LIBRARIES)) $(addprefix --library $(ARDUINO_LIBRARIES_ROOT)/,$(foreach lib, $(sort $(ARDUINO_LIBRARIES)), $(call extractLibraryName,$(lib)))) --build-path $(OROOT) --build-cache-path $(ARDUINO_CORE_CACHE_DIR) --verbose $(ARDUINO_SKETCH_DIR)/$(ARDUINO_SKETCH_NAME).ino
 
 core: 
 ifneq ($(ARDUINO_CORE_AVAILABLE),true)
